@@ -1,10 +1,27 @@
-import styled from 'styled-components'
+import Head from '../src/components/Head'
+import Footer from '../src/components/Footer'
+import Container from '../src/components/Container'
+import Main from '../src/components/Main'
+import Background from '../src/components/ContainerBackground';
+import Header from '../src/components/Header'
+import Slots from './slots';
+import db from '../db.json';
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
 
 export default function Home() {
-  return <Title>My page</Title>
+  
+  return (
+    <Background backgroundImage={db.bg}>
+      <Container>
+        <Head/>
+        <Header/>
+        <Main>
+          <Main.Team>
+            <Slots/>
+          </Main.Team>     
+        </Main>
+        <Footer/>
+      </Container>
+    </Background>
+  )
 }
