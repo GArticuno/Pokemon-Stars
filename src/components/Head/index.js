@@ -4,7 +4,7 @@ import Head from 'next/head';
 export default function index() {
     return (
       <Head>
-        <title>PU-stars</title>
+        <title>Pokemon-stars</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
     );
