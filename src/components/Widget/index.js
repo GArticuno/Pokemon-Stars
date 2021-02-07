@@ -18,7 +18,6 @@ Widget.Name = styled.div`
   padding-top:10px;
   padding-left:10px;
   background-color: ${({ theme }) => theme.colors.secondary};
-  
   * {
     margin: 0;
   }
@@ -27,12 +26,16 @@ Widget.Name = styled.div`
     font-weight: 400;
     margin-bottom: 15px;
   }
-  #name{
-  }
   #ability{
     width:170px;
   }
-  
+  @media screen and (max-width: 344px) and (min-width:280px){
+    grid-template-columns: 30% 30%;
+    justify-content: flex-start;
+    div{
+      font-size: 80%;
+    }
+    }
 `;
 
 Widget.Gif = styled.div`
@@ -66,6 +69,17 @@ Widget.Item = styled.div`
     width:32px;
     align-items: center;
   }
+  @media screen and (max-width: 344px) and (min-width:280px){
+    section{
+      grid-template-columns: 30px 70px;
+    }
+    div{
+      font-size:80%;
+    }
+    #btnimport{
+      margin-left:70px;
+    }
+    }
 `;
 Widget.Content = styled.div`
   padding: 14px 22px 32px 12px;
@@ -79,11 +93,18 @@ Widget.Content = styled.div`
     grid-template-columns: 140px 140px;
   }
   #moves{
-    
     background-color: ${({ theme }) => theme.colors.secondary};
     padding: 5px 10px 5px 5px;
     justify-items:center;
     border-radius: 7px;
   }
+  @media screen and (max-width: 344px) and (min-width:280px){
+    section{
+      grid-template-columns: 100px 100px;
+    }
+    div{
+      font-size:80%;
+    }
+    }
 `;
 export default Widget;

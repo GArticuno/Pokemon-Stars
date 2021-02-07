@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../Button';
+import Popup from 'reactjs-popup'
 
 const Header= styled.footer`
     width: 100%;
@@ -45,8 +46,7 @@ const Header= styled.footer`
         }
     }
 `
-function submit(){
-}
+
 export default function index(props){
     return(
         <Header {...props}>

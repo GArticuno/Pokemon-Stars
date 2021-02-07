@@ -8,14 +8,12 @@ const Button= styled.button`
     border: 0;
     outline:0;
     font-size:15px;
-    width: 5rem;
+    min-width: 5rem;
     height:1.5rem;
+    padding-bottom:3px;
     cursor: pointer;
     &:hover{
     opacity: .5;
-  }
-  &:focus{
-    background-color: ${({ theme }) => theme.colors.choose};
   }
 `
 export default Button;

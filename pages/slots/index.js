@@ -1,30 +1,8 @@
-import {StylesSheet} from 'react';
 import Widget from '../../src/components/Widget';
 import Button from '../../src/components/Button';
-import Popup from 'reactjs-popup';
+import Popup from '../../src/components/Popup';
 import db from '../../db.json';
-import styled from 'styled-components';
 
-const SPopup= styled(Popup)`
-&-content {
-  margin: auto;
-  color: ${({ theme }) => theme.colors.contrastText};
-  background: ${({ theme }) => theme.colors.mainBg};
-  width: 50%;
-  padding: 5px;
-  border-radius: ${({ theme }) => theme.borderRadius};
-}
-&-arrow {
-  color: ${({ theme }) => theme.colors.secundary};;
-}
-[role='tooltip']&-content {
-  width: 250px;
-}
-
-&-overlay {
-  background: rgba(0, 0, 0, 0.5);
-}
-`
 function ivcheck(iv){
   if(iv===undefined){
     return ''
@@ -52,25 +30,25 @@ const Slots =data.map((d, index) =>
           <img src={`/hold-item/${d.item.toLowerCase().replace(' ','-').replace('-berry','')}.png`}/>
         </div>
         <div>{d.item}</div>
-        <SPopup
-          class="popup"
-          trigger={<Button className="button"> import </Button>}
+        <Popup
+          trigger={<Button id="btnimport"> import </Button>}
           position="top center"
           nested
           >
             <span>
-              <pre>
+              <pre id="becopy">
 {`${data[index].name} @ ${data[index].item}
 Ability: ${data[index].Ability}
 EVs: ${data[index].EVs}
 ${data[index].nature} Nature
 ${ivcheck(data[index].IVs)}
-${data[index].moves[0]}
-${data[index].moves[1]}
-${data[index].moves[2]}
-${data[index].moves[3]}`}</pre>
+-${data[index].moves[0]}
+-${data[index].moves[1]}
+-${data[index].moves[2]}
+-${data[index].moves[3]}`}</pre>
             </span>
-        </SPopup>
+            <Button id="btncopy" onClick={()=>Copyteam()}>copy</Button>
+        </Popup>
       </section>
     </Widget.Item>
     <Widget.Content>
@@ -84,6 +62,17 @@ ${data[index].moves[3]}`}</pre>
   </Widget>
 )
 
+function Copyteam(){
+  document.getElementById("btncopy").innerHTML= "copied";
+  var team= document.getElementById("becopy");
+  var text= document.createElement('textarea');  
+  text.value=team.textContent
+  document.body.appendChild(text);
+  text.select();
+  document.execCommand("Copy");
+  text.remove();
+  
+}
 export default function index(){
     return(
         <>
